@@ -17,41 +17,6 @@ local TpYellow = Instance.new("TextButton")
 local TpBlue = Instance.new("TextButton")
 local TpGreen = Instance.new("TextButton")
 
-local HotKeys = {}
-
---[[UserInput.InputBegan:Connect(function(input, ignore)
-	if (input.UserInputType == Enum.UserInputType.Keyboard) then
-		if (table.find(HotKeys, input.KeyCode)) then break end
-		table.insert(HotKeys, input.KeyCode)
-		HotKeyHandler()
-	elseif (input.UserInputType == Enum.UserInputType.MouseButton1) then
-		if (table.find(HotKeys, input.UserInputType)) then break end
-		table.insert(HotKeys, input.UserInputType)
-		HotKeyHandler()
-	end
-end)
-
-UserInput.InputEnded:Connect(function(input, ignored)
-	if (table.find(HotKeys, input.KeyCode) or (input.UserInputType == Enum.UserInputType.MouseButton1)) then
-		for i,value in pairs(HotKeys) do
-			if (value[i] == nil) or (value[i] == input.UserInputType) or (value[i] == input.KeyCode) then
-				table.remove(HotKeys, i)
-			end
-		end
-		HotKeyHandler()
-	end
-end)
-
-function HotKeyHandler()
-    if (table.find(HotKeys, Enum.KeyCode.LeftControl) and table.find(HotKeys, Enum.UserInputType.MouseButton1) and (Mouse.Hit.p ~= nil) then
-        LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Mouse.Hit.p)
-    end
-
-    if input.KeyCode == Enum.KeyCode.P then
-		GuiH.Enabled = not GuiH.Enabled
-    end 
-end]]
-
 Mouse.Button1Down:Connect(function()
 	if not Mouse.Target then return end
 	if not UserInput:IsKeyDown(Enum.KeyCode.LeftControl) then return end
