@@ -318,7 +318,7 @@ Dark = FromHex'0d0d0d';
 Secondary = {
 Main = FromHex'1b1b1b';
 Light = FromHex'ffffff';
-Dark = FromHex'aeaeae';
+Dark = FromHex'ffffff';
 };
 };
 
