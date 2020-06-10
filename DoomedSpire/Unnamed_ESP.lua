@@ -311,8 +311,8 @@ end
 
 local Colors = {
 Primary = {
-Main = FromHex'424242';
-Light = FromHex'6d6d6d';
+Main = FromHex'ff0000';
+Light = FromHex'000066';
 Dark = FromHex'1b1b1b';
 };
 Secondary = {
