@@ -7,6 +7,8 @@ local GuiH = Instance.new("ScreenGui")
 local Frame = Instance.new("Frame")
 local Owner = Instance.new("TextLabel")
 local Txt = Instance.new("TextLabel")
+local loadHitbox = Instance.new("TextButton")
+local loadESP = Instance.new("TextButton")
 --
 local TpMid = Instance.new("TextButton")
 local TpSpec = Instance.new("TextButton")
@@ -14,7 +16,6 @@ local TpRed = Instance.new("TextButton")
 local TpYellow = Instance.new("TextButton")
 local TpBlue = Instance.new("TextButton")
 local TpGreen = Instance.new("TextButton")
-local loadHitbox = Instance.new("TextButton")
 
 local HotKeys = {}
 
@@ -70,7 +71,7 @@ GuiH.ResetOnSpawn = false
 Frame.Parent = GuiH
 Frame.Draggable = true
 Frame.Active = true
-Frame.BackgroundColor3 = Color3.fromRGB(43, 45, 44)
+Frame.BackgroundColor3 = Color3.fromRGB(32, 32, 33)
 Frame.BackgroundTransparency = 0
 Frame.Position = UDim2.new(0.297752798, 0, 0.28443113, 0)
 Frame.Size = UDim2.new(0, 400, 0, 250)
@@ -185,12 +186,26 @@ loadHitbox.Name = "Load_HitboxExpander"
 loadHitbox.Parent = Frame
 loadHitbox.BackgroundColor3 = Color3.fromRGB(27, 42, 53)
 loadHitbox.BackgroundTransparency = 0
-loadHitbox.Position = UDim2.new(0.75, -61, 0.02, 17)
-loadHitbox.Size = UDim2.new(0, 122, 0, 34)
+loadHitbox.Position = UDim2.new(0.75, -61, 0.02, 10)
+loadHitbox.Size = UDim2.new(0, 122, 0, 20)
 loadHitbox.Font = Enum.Font.SourceSans
-loadHitbox.Text = "Load HitboxExpander (Requires Deobfuscation)"
+loadHitbox.Text = "Load HitboxExpander (Requires SynapseX)"
 loadHitbox.TextColor3 = Color3.fromRGB(110, 65, 200)
 loadHitbox.TextScaled = true
 loadHitbox.MouseButton1Click:Connect(function()
     loadstring(game:HttpGet("https://gameovers.net/Scripts/Free/HitboxExpander/main.lua", true))()
+end)
+
+loadESP.Name = "Load_Unnamed"
+loadESP.Parent = Frame
+loadESP.BackgroundColor3 = Color3.fromRGB(27, 42, 53)
+loadESP.BackgroundTransparency = 0
+loadESP.Position = UDim2.new(0.75, -61, 0.12, 10)
+loadESP.Size = UDim2.new(0, 122, 0, 20)
+loadESP.Font = Enum.Font.SourceSans
+loadESP.Text = "Load Unnamed ESP (Requires SynapseX)"
+loadESP.TextColor3 = Color3.fromRGB(110, 65, 200)
+loadESP.TextScaled = true
+loadESP.MouseButton1Click:Connect(function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/RRR06/rlua/master/DoomedSpire/Unnamed_ESP.lua", true))()
 end)
