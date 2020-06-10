@@ -58,7 +58,7 @@ Mouse.Button1Down:Connect(function()
 end)
 
 UserInput.InputBegan:Connect(function(input, ignore)
-	if input.KeyCode == Enum.KeyCode.P then
+	if input.KeyCode == Enum.KeyCode.Insert then
 		GuiH.Enabled = not GuiH.Enabled
     end 
 end)
@@ -93,7 +93,7 @@ Txt.BackgroundTransparency = 1
 Txt.Position = UDim2.new(0.5, -100, 0.8, 17)
 Txt.Size = UDim2.new(0, 200, 0, 34)
 Txt.Font = Enum.Font.SourceSans
-Txt.Text = "Press Control + Left Mouse button to tp anywhere, and P to toggle GUI"
+Txt.Text = "Press Control + Left Mouse button to tp anywhere, and Insert to toggle GUI"
 Txt.TextColor3 = Color3.fromRGB(255, 255, 255)
 Txt.TextScaled = true
 
