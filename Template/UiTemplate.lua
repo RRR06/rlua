@@ -10,6 +10,18 @@ local Txt = Instance.new("TextLabel")
 local DestroyGui = Instance.new("TextButton")
 local DestroyAll = Instance.new("TextButton")
 local ManHide = Instance.new("TextButton")
+--
+
+--
+local UiColor = {
+	SuperDark = Color3.fromRGB(27, 27, 28),
+	Dark = Color3.fromRGB(32, 32, 33),
+	LightDark = Color3.fromRGB(27, 42, 53)
+}
+local HideCode = Enum.KeyCode.Insert
+if IfDebug then
+	print("Loaded config settings")
+end
 
 --RRR06's native UI version 2.2
 
@@ -28,7 +40,7 @@ end
 TopBar.Parent = GuiH
 TopBar.Draggable = true
 TopBar.Active = true
-TopBar.BackgroundColor3 = Color3.fromRGB(27, 27, 28)
+TopBar.BackgroundColor3 = UiColor["SuperDark"]
 TopBar.BackgroundTransparency = 0
 TopBar.Position = UDim2.new(0.297752798, 0, 0.28443113, 0)
 TopBar.Size = UDim2.new(0, 400, 0, 20)
@@ -39,7 +51,7 @@ end
 
 ManHide.Name = "Hide"
 ManHide.Parent = TopBar
-ManHide.BackgroundColor3 = Color3.fromRGB(27, 42, 53)
+ManHide.BackgroundColor3 = UiColor["LightDark"]
 ManHide.BackgroundTransparency = 1
 ManHide.Position = UDim2.new(0.96, -12, 0, 0)
 ManHide.Size = UDim2.new(0, 24, 0, 20)
@@ -54,7 +66,7 @@ end)
 
 MainFrame.Parent = TopBar
 MainFrame.Active = true
-MainFrame.BackgroundColor3 = Color3.fromRGB(32, 32, 33)
+MainFrame.BackgroundColor3 = UiColor["Dark"]
 MainFrame.BackgroundTransparency = 0
 MainFrame.Position = UDim2.new(0, 0, 0, 0)
 MainFrame.Size = UDim2.new(0, 400, 0, 250)
@@ -64,7 +76,7 @@ end
 
 Owner.Name = "OwnerProg"
 Owner.Parent = MainFrame
-Owner.BackgroundColor3 = Color3.fromRGB(27, 42, 53)
+Owner.BackgroundColor3 = UiColor["LightDark"]
 Owner.BackgroundTransparency = 1
 Owner.Position = UDim2.new(0.2, -61, 0.02, 17)
 Owner.Size = UDim2.new(0, 122, 0, 34)
@@ -78,7 +90,7 @@ end
 
 Txt.Name = "Info"
 Txt.Parent = MainFrame
-Txt.BackgroundColor3 = Color3.fromRGB(27, 42, 53)
+Txt.BackgroundColor3 = UiColor["LightDark"]
 Txt.BackgroundTransparency = 1
 Txt.Position = UDim2.new(0, 0, 0.8, 15)
 Txt.Size = UDim2.new(1, 0, 0, 34)
@@ -92,7 +104,7 @@ end
 
 DestroyGui.Name = "DestroyGui"
 DestroyGui.Parent = MainFrame
-DestroyGui.BackgroundColor3 = Color3.fromRGB(27, 42, 53)
+DestroyGui.BackgroundColor3 = UiColor["LightDark"]
 DestroyGui.BackgroundTransparency = 0
 DestroyGui.Position = UDim2.new(0.8, -61, 0.75, 8.5)
 DestroyGui.Size = UDim2.new(0, 122, 0, 17)
@@ -112,7 +124,7 @@ end
 
 DestroyAll.Name = "DestroyAllGuis"
 DestroyAll.Parent = MainFrame
-DestroyAll.BackgroundColor3 = Color3.fromRGB(27, 42, 53)
+DestroyAll.BackgroundColor3 = UiColor["LightDark"]
 DestroyAll.BackgroundTransparency = 0
 DestroyAll.Position = UDim2.new(0.2, -61, 0.75, 8.5)
 DestroyAll.Size = UDim2.new(0, 122, 0, 17)
@@ -133,7 +145,7 @@ if IfDebug then
 end
 
 game:GetService("UserInputService").InputBegan:Connect(function(input, ignore)
-	if input.KeyCode == Enum.KeyCode.Insert then
+	if input.KeyCode == HideCode then
 		GuiH.Enabled = not GuiH.Enabled
     end
 end)
