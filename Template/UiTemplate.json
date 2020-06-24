@@ -1,8 +1,0 @@
-{
-  "TargetFiles": [
-    "https://raw.githubusercontent.com/RRR06/rlua/master/Template/UiTemplate.lua"
-  ],
-  "Name": "UiTemplate",
-  "Version": "2.3.0",
-  "Type": "Descriptor"
-}
