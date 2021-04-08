@@ -1,68 +1,41 @@
 local IfPrint = true
 local IfDebug = false and IfPrint
 
-local GuiH = Instance.new("ScreenGui")
-local TopBar = Instance.new("Frame")
+--local GuiH = Instance.new("ScreenGui")
+--local TopBar = Instance.new("Frame")
 local MainFrame = Instance.new("Frame")
 local Owner = Instance.new("TextLabel")
 local Txt = Instance.new("TextLabel")
 --
 local DestroyGui = Instance.new("TextButton")
 local DestroyAll = Instance.new("TextButton")
-local ManHide = Instance.new("TextButton")
---
+--local ManHide = Instance.new("TextButton")
 
---
 local UiColor = {
 	SuperDark = Color3.fromRGB(27, 27, 28),
 	Dark = Color3.fromRGB(32, 32, 33),
 	LightDark = Color3.fromRGB(27, 42, 53)
 }
-local HideCode = Enum.KeyCode.Insert
+--local HideCode = Enum.KeyCode.Home
+
 if IfDebug then
 	print("Loaded config settings")
 end
-
---RRR06's native UI version 2.2
-
 if IfPrint then
-	print("Loading RRR06's native UI version 2.1")
-	print("Customize module: Template")
+	print("Loading RRR06's UiApi Template!")
 end
 
-GuiH.Name = "Gui_Hack"
-GuiH.Parent = game:GetService('CoreGui')
-GuiH.ResetOnSpawn = false
-if IfDebug then
-	print("Loaded GuiH")
-end
+local uiApi = getgenv().uiApi
 
-TopBar.Parent = GuiH
-TopBar.Draggable = true
-TopBar.Active = true
-TopBar.BackgroundColor3 = UiColor["SuperDark"]
-TopBar.BackgroundTransparency = 0
-TopBar.Position = UDim2.new(0.297752798, 0, 0.28443113, 0)
-TopBar.Size = UDim2.new(0, 400, 0, 20)
-TopBar.ZIndex = 2
-if IfDebug then
-	print("Loaded TopBar")
-end
-
-ManHide.Name = "Hide"
-ManHide.Parent = TopBar
-ManHide.BackgroundColor3 = UiColor["LightDark"]
-ManHide.BackgroundTransparency = 1
-ManHide.Position = UDim2.new(0.96, -12, 0, 0)
-ManHide.Size = UDim2.new(0, 24, 0, 20)
-ManHide.Font = Enum.Font.SourceSans
-ManHide.Text = "Hide"
-ManHide.TextColor3 = Color3.fromRGB(255, 255, 255)
-ManHide.TextScaled = true
-ManHide.ZIndex = 2
-ManHide.MouseButton1Click:Connect(function()
-   GuiH.Enabled = not GuiH.Enabled
-end)
+local GuiH = createNewUI("Gui_Hack", false, Enum.KeyCode.Home, false)
+local TopBar = createNewComp("Frame", GuiH, {
+	Draggable = true, Active = true, BackgroundColor3 = UiColor["SuperDark"], BackgroundTransparency = 0, Position = UDim2.new(0.297752798, 0, 0.28443113, 0), Size = UDim2.new(0, 400, 0, 20), ZIndex = 2
+})
+createNewClickableComp("TextButton", TopBar, function()
+		GuiH.Enabled = not GuiH.Enabled 
+	end, {
+	BackgroundColor3 = UiColor["LightDark"], BackgroundTransparency = 1, Position = UDim2.new(0.96, -12, 0, 0), Size = UDim2.new(0, 24, 0, 20), Font = Enum.Font.SourceSans, Text = "Hide", TextColor3 = Color3.fromRGB(255, 255, 255), TextScaled = true, ZIndex = 2
+})
 
 MainFrame.Parent = TopBar
 MainFrame.Active = true
@@ -113,44 +86,11 @@ DestroyGui.Text = "Destroy this Gui"
 DestroyGui.TextColor3 = Color3.fromRGB(196, 40, 28)
 DestroyGui.TextScaled = true
 DestroyGui.MouseButton1Click:Connect(function()
-   GuiH:Destroy()
+   uiApi["Gui_Hack"]:Destroy()
+   uiApi["Gui_Hack"] = nil
 end)
 if IfDebug then
 	print("Loaded DestroyGui")
-	if IfPrint then
-		print("Destroyed 1 GuiH")
-	end
-end
-
-DestroyAll.Name = "DestroyAllGuis"
-DestroyAll.Parent = MainFrame
-DestroyAll.BackgroundColor3 = UiColor["LightDark"]
-DestroyAll.BackgroundTransparency = 0
-DestroyAll.Position = UDim2.new(0.2, -61, 0.75, 8.5)
-DestroyAll.Size = UDim2.new(0, 122, 0, 17)
-DestroyAll.Font = Enum.Font.SourceSans
-DestroyAll.Text = "Destroy all Guis"
-DestroyAll.TextColor3 = Color3.fromRGB(196, 40, 28)
-DestroyAll.TextScaled = true
-DestroyAll.MouseButton1Click:Connect(function()
-	while game:GetService('CoreGui'):FindFirstChild("Gui_Hack") do
-		game:GetService('CoreGui'):FindFirstChild("Gui_Hack"):Destroy()
-	end
-	if IfPrint then
-		print("Destroyed all GuiH")
-	end
-end)
-if IfDebug then
-	print("Loaded DestroyAll")
-end
-
-game:GetService("UserInputService").InputBegan:Connect(function(input, ignore)
-	if input.KeyCode == HideCode then
-		GuiH.Enabled = not GuiH.Enabled
-    end
-end)
-if IfDebug then
-	print("Loaded TogglerSys")
 end
 
 if IfPrint then
